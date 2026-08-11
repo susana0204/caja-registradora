@@ -56,7 +56,74 @@ else
     descuento = 0;
 }
 
-decimal totalFinal = total - total * descuento;
+decimal totalFinal = total - (total * descuento);
 Console.WriteLine($"Subtotal: ${total}");
 Console.WriteLine($"Descuento aplicado: ${descuento}");
 Console.WriteLine($"Total con descuento: ${totalFinal}");
+
+string mediodepago;
+decimal recargo = 0;
+do
+{
+    Console.WriteLine();
+    Console.WriteLine("medio de pago:");
+    Console.WriteLine("1 - Efectivo");
+    Console.WriteLine("2 - Débito");
+    Console.WriteLine("3 - Crédito");
+    mediodepago = Console.ReadLine()!;
+    switch (mediodepago)
+    {
+        case "1":
+            Console.WriteLine("Pago en efectivo.");
+            descuento = totalFinal * 0.10m;
+            totalFinal -= descuento;
+            break;
+        case "2":
+            Console.WriteLine("Pago con débito.");
+            descuento = 0;
+            break;
+        case "3":
+            Console.WriteLine("Pago con crédito.");
+            recargo = totalFinal * 0.15m;
+            totalFinal += recargo;
+            break;
+        default:
+            Console.WriteLine("Opción inválida. Intente nuevamente.");
+            break;
+    }
+} while (mediodepago != "1" && mediodepago != "2" && mediodepago != "3");
+
+Console.WriteLine($"Total a pagar: ${totalFinal}");
+
+Console.WriteLine();
+for (int i = 0; i < 25; i++)
+{
+    Console.Write("-");
+}
+
+Console.WriteLine();
+Console.WriteLine($"      {nombreComercio}");
+for (int i = 0; i < 25; i++)
+{
+    Console.Write("-");
+}
+
+Console.WriteLine();
+Console.WriteLine($"nombre del cajero:{nombre}");
+Console.WriteLine($"Productos: {cantidad}");
+Console.WriteLine($"Subtotal: {total}");
+Console.WriteLine($"Descuento: {descuento}");
+Console.WriteLine($"Recargo: {recargo}");
+
+for (int i = 0; i < 25; i++)
+{
+    Console.Write("-");
+}
+
+Console.WriteLine();
+Console.WriteLine($"TOTAL: {totalFinal}");
+
+for (int i = 0; i < 25; i++)
+{
+    Console.Write("-");
+}
